@@ -1,5 +1,5 @@
-import XCTest
 @testable import Stack
+import XCTest
 
 final class StackTests: XCTestCase {
     func testCount() {
@@ -13,7 +13,7 @@ final class StackTests: XCTestCase {
         stack.pop()
         XCTAssertEqual(stack.count, 2)
     }
-    
+
     func testIsEmpty() {
         var stack = Stack<Int>(capacity: 10)
         XCTAssertTrue(stack.isEmpty)
@@ -26,7 +26,7 @@ final class StackTests: XCTestCase {
         stack.pop()
         XCTAssertTrue(stack.isEmpty)
     }
-    
+
     func testPushAndPop() {
         var stack = Stack<Int>(capacity: 10)
         stack.push(10)
@@ -36,7 +36,7 @@ final class StackTests: XCTestCase {
         XCTAssertEqual(stack.pop(), 11)
         XCTAssertEqual(stack.pop(), 10)
     }
-    
+
     func testPeek() {
         var stack = Stack<Int>(capacity: 10)
         XCTAssertNil(stack.peek())
@@ -51,7 +51,7 @@ final class StackTests: XCTestCase {
         stack.pop()
         XCTAssertNil(stack.peek())
     }
-    
+
     func testDescription() {
         var intStack = Stack<Int>(capacity: 10)
         XCTAssertEqual(String(describing: intStack), "[]")
@@ -59,7 +59,7 @@ final class StackTests: XCTestCase {
         intStack.push(11)
         intStack.push(12)
         XCTAssertEqual(String(describing: intStack), "[10, 11, 12]")
-        
+
         var stringStack = Stack<String>(capacity: 10)
         XCTAssertEqual(String(describing: stringStack), "[]")
         stringStack.push("One")
@@ -67,42 +67,42 @@ final class StackTests: XCTestCase {
         stringStack.push("Three")
         XCTAssertEqual(String(describing: stringStack), #"["One", "Two", "Three"]"#)
     }
-    
+
     func testValueSemantics() {
         var stack1 = Stack<String>(capacity: 10)
         stack1.push("One")
         stack1.push("Two")
         stack1.push("Three")
-    
+
         var stack2 = stack1
         XCTAssertEqual(stack1.count, 3)
         XCTAssertEqual(stack2.count, 3)
-        
+
         stack1.pop()
         XCTAssertEqual(stack1.count, 2)
         XCTAssertEqual(stack2.count, 3)
-        
+
         stack2.push("Four")
         XCTAssertEqual(stack1.count, 2)
         XCTAssertEqual(stack2.count, 4)
     }
-    
+
     func testCopyOnWrite() {
         var stack1 = Stack<String>(capacity: 10)
         stack1.push("One")
         stack1.push("Two")
-        
+
         var stack2 = stack1
         XCTAssertEqual(stack1.count, 2)
         XCTAssertEqual(stack2.count, 2)
         XCTAssert(stack1.buffer === stack2.buffer)
-        
+
         stack2.pop()
         XCTAssertEqual(stack1.count, 2)
         XCTAssertEqual(stack2.count, 1)
         XCTAssert(stack1.buffer !== stack2.buffer)
     }
-    
+
     static var allTests = [
         ("testCount", testCount),
         ("testIsEmpty", testIsEmpty),
@@ -110,6 +110,6 @@ final class StackTests: XCTestCase {
         ("testPeek", testPeek),
         ("testDescription", testDescription),
         ("testValueSemantics", testValueSemantics),
-        ("testCopyOnWrite", testCopyOnWrite)
+        ("testCopyOnWrite", testCopyOnWrite),
     ]
 }
