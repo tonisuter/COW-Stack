@@ -1,7 +1,7 @@
 import XCTest
 
-import CopyOnWriteTests
+import StackTests
 
 var tests = [XCTestCaseEntry]()
-tests += CopyOnWriteTests.allTests()
+tests += StackTests.allTests()
 XCTMain(tests)
