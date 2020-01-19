@@ -3,7 +3,7 @@
 This SPM package contains a very basic implementation of a generic `Stack<Element>` type that has value semantics and uses [copy-on-write (COW)](https://en.wikipedia.org/wiki/Copy-on-write) to improve its performance.
 Therefore, it works similarly to the collection types from Swift's standard library (e.g., `Array<Element>`, `Set<Element>`, `String`).
 
-There is an accompanying blog post for this repository: **TODO**
+There is an accompanying blog post for this repository: https://tonisuter.com/blog/2020/01/understanding-copy-on-write-value-types-swift/
 
 ### Caution:  
 **This repository was only created to demonstrate Swift's copy-on-write mechanism with an example.
